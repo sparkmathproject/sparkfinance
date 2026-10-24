@@ -1,3 +1,4 @@
+<!-- SparkFinance by Naina Rao. AI tools helped with specific features in this version (fund and scorecard); the core game was coded by Naina. -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,8 @@
 <button onclick="meetSharks('Grace Morales')">Grace Morales</button>
 <p id="shark-line"></p>
 <p id="score-line"> Score: 0 deals</p>
+<p id="fund-line"> Fund: $500000</p>
+<p id="scorecard-line"> Deals: 0 | Counters: 0 | Outs: 0</p>
 <p id="pitch-line"></p>
 <p>Your offer: $<input id="offer" type="number"></p>
 <button onclick="makeOffer()">Make offer</button>
@@ -37,6 +40,9 @@
 <script>
 let sharkName= "";
 let deals=0;
+let fund=500000;
+let counters=0;
+let outs=0;
 function meetSharks(name) {
     sharkName = name;
      document.getElementById("shark-line").textContent= name + " is ready to invest!";
@@ -54,10 +60,17 @@ let amount= document.getElementById("offer").value;
             document.getElementById("shark-says").textContent= sharkName + " Deal! We have a partner.";
             deals=deals+1;
             document.getElementById("score-line").textContent = "Score: " + deals + " deals";
+            fund = fund - amount;
+            document.getElementById("fund-line").textContent = "Fund: $" + fund;
+            document.getElementById("scorecard-line").textContent = "Deals: " + deals + " | Counters: " + counters + " | Outs: " + outs;
         } else if (amount >= 30000) {
-            document.getElementById("shark-says").textContent =sharkName + "Counter offer. I will do $4000 for 15%.";
+            document.getElementById("shark-says").textContent = sharkName + " Counter offer. I will do $40000 for 15%.";
+            counters = counters + 1;
+            document.getElementById("scorecard-line").textContent = "Deals: " + deals + " | Counters: " + counters + " | Outs: " + outs;
         } else {
-            document.getElementById("shark-says").textContent = sharkName + "That is too low. I am out.";
+            document.getElementById("shark-says").textContent = sharkName + " That is too low. I am out.";
+            outs = outs + 1;
+            document.getElementById("scorecard-line").textContent = "Deals: " + deals + " | Counters: " + counters + " | Outs: " + outs;
 }
 }
 </script>
