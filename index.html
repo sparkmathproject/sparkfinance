@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SparkFinance</title>
+    <style>
+        body{
+            font-family:sans-serif;
+            background-color: lightblue;
+            text-align: center;
+        }
+        h1 {
+            color: darkcyan
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+        <h1>SparkFinance</h1>
+        <p>Your name: <input id="player-name" type="text" ></p>
+        <button onclick="sayHello()">Start</button>
+        <p id="hello-line"></p>
+<button onclick="meetSharks('Victor Sterling')">Victor Sterling</button>
+<button onclick="meetSharks('Diana Reeves')">Diana Reeves</button>
+<button onclick="meetSharks('Marcus Chen')">Marcus Chen</button>
+<button onclick="meetSharks('Grace Morales')">Grace Morales</button>
+<p id="shark-line"></p>
+<p id="score-line"> Score: 0 deals</p>
+<p id="pitch-line"></p>
+<p>Your offer: $<input id="offer" type="number"></p>
+<button onclick="makeOffer()">Make offer</button>
+<p id="offer-line"></p>
+<p id="shark-says"></p>
+<script>
+let sharkName= "";
+let deals=0;
+function meetSharks(name) {
+    sharkName = name;
+     document.getElementById("shark-line").textContent= name + " is ready to invest!";
+        document.getElementById("pitch-line").textContent= "FreshPack: eco-friendly lunch boxes for students. Asking $50,000 for 10%.";
+}
+ function sayHello() {
+        let name=document.getElementById("player-name"). value;
+        document.getElementById("hello-line"). textContent = "Welcome, " + name +"! Pick a shark.";
+ }
+function makeOffer () {
+let amount= document.getElementById("offer").value;
+    let valuation = amount * 10; 
+        document.getElementById("offer-line").textContent = "You offered $"+ amount +". That values Freshpack at $"+ valuation +".";
+        if (amount >= 50000) {
+            document.getElementById("shark-says").textContent= sharkName + " Deal! We have a partner.";
+            deals=deals+1;
+            document.getElementById("score-line").textContent = "Score: " + deals + " deals";
+        } else if (amount >= 30000) {
+            document.getElementById("shark-says").textContent =sharkName + "Counter offer. I will do $4000 for 15%.";
+        } else {
+            document.getElementById("shark-says").textContent = sharkName + "That is too low. I am out.";
+}
+}
+</script>
+</body>
+</html>
