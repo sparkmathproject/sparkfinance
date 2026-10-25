@@ -18,21 +18,76 @@
             background-color: #c8a44c;
             color: #070a12;
         }
+        .shark-card {
+            background-color: #141a2a;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            text-align: left;
+            cursor: pointer;
+        }
+        .shark-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #070a12;
+        }
+        .shark-tag {
+            display: inline-block;
+            background-color: #262e44;
+            padding: 3px 8px;
+            margin: 3px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+<div id="screen-start">
         <h1>SparkFinance</h1>
         <p>An Investment Pitch Simulation</p>
         <p>Your name: <input id="player-name" type="text" ></p>
         <button onclick="sayHello()">Start</button>
-        <p id="hello-line"></p>
+</div>
+<div id="screen-sharks" style="display:none">
 <h2>Choose Your Shark</h2>
 <p>Each shark invests differently. Pick the one that matches your style.</p>
+<p id="hello-line"></p>
+<div class="shark-card" onclick="meetSharks('Victor Sterling')">
+<div class="shark-circle" style="background-color:#e2d08a">V</div>
+<h3>Victor Sterling</h3>
+<p>"The Dealmaker"</p>
+<p><i>"Let me tell you why the numbers don't lie..."</i></p>
+<span class="shark-tag">Royalties</span><span class="shark-tag">Numbers-First</span><span class="shark-tag">Licensing</span>
+</div>
+<div class="shark-card" onclick="meetSharks('Diana Reeves')">
+<div class="shark-circle" style="background-color:#f4728a">D</div>
+<h3>Diana Reeves</h3>
+<p>"The Retail Queen"</p>
+<p><i>"Every product tells me a story, yours better be good."</i></p>
+<span class="shark-tag">Consumer Products</span><span class="shark-tag">Retail</span><span class="shark-tag">Mass Market</span>
+</div>
+<div class="shark-card" onclick="meetSharks('Marcus Chen')">
+<div class="shark-circle" style="background-color:#5aa9ff">M</div>
+<h3>Marcus Chen</h3>
+<p>"The Maverick"</p>
+<p><i>"Sweat equity is the most valuable equity there is."</i></p>
+<span class="shark-tag">Technology</span><span class="shark-tag">Big Equity</span><span class="shark-tag">Scale Fast</span>
+</div>
+<div class="shark-card" onclick="meetSharks('Grace Morales')">
+<div class="shark-circle" style="background-color:#2dd4a0">G</div>
+<h3>Grace Morales</h3>
+<p>"The People's Investor"</p>
+<p><i>"I invest in people, not just the product."</i></p>
+<span class="shark-tag">People First</span><span class="shark-tag">Gut Instinct</span><span class="shark-tag">Underdogs</span>
+</div>
+</div>
+<div id="screen-game" style="display:none">
 <p id="shark-intro"></p>
-<button onclick="meetSharks('Victor Sterling')">Victor Sterling</button>
-<button onclick="meetSharks('Diana Reeves')">Diana Reeves</button>
-<button onclick="meetSharks('Marcus Chen')">Marcus Chen</button>
-<button onclick="meetSharks('Grace Morales')">Grace Morales</button>
 <p id="shark-line"></p>
 <p id="score-line"> Score: 0 deals</p>
 <p id="fund-line"> Fund: $500000</p>
@@ -42,12 +97,20 @@
 <button onclick="makeOffer()">Make offer</button>
 <p id="offer-line"></p>
 <p id="shark-says"></p>
+<button onclick="showScreen('screen-sharks')">Change Shark</button>
+</div>
 <script>
 let sharkName= "";
 let deals=0;
 let fund=500000;
 let counters=0;
 let outs=0;
+function showScreen(id) {
+    document.getElementById('screen-start').style.display = 'none';
+    document.getElementById('screen-sharks').style.display = 'none';
+    document.getElementById('screen-game').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+}
 function meetSharks(name) {
     sharkName = name;
     if (name === "Victor Sterling") {
@@ -61,10 +124,12 @@ function meetSharks(name) {
     }
      document.getElementById("shark-line").textContent= name + " is ready to invest!";
         document.getElementById("pitch-line").textContent= "FreshPack: eco-friendly lunch boxes for students. Asking $50,000 for 10%.";
+        showScreen("screen-game");
 }
  function sayHello() {
         let name=document.getElementById("player-name"). value;
         document.getElementById("hello-line"). textContent = "Welcome, " + name +"! Pick a shark.";
+        showScreen("screen-sharks");
  }
 function makeOffer () {
 let amount= document.getElementById("offer").value;
