@@ -26,6 +26,9 @@
         <p>Your name: <input id="player-name" type="text" ></p>
         <button onclick="sayHello()">Start</button>
         <p id="hello-line"></p>
+<h2>Choose Your Shark</h2>
+<p>Each shark invests differently. Pick the one that matches your style.</p>
+<p id="shark-intro"></p>
 <button onclick="meetSharks('Victor Sterling')">Victor Sterling</button>
 <button onclick="meetSharks('Diana Reeves')">Diana Reeves</button>
 <button onclick="meetSharks('Marcus Chen')">Marcus Chen</button>
@@ -47,6 +50,15 @@ let counters=0;
 let outs=0;
 function meetSharks(name) {
     sharkName = name;
+    if (name === "Victor Sterling") {
+        document.getElementById("shark-intro").textContent = "Victor Sterling, The Dealmaker: Let me tell you why the numbers don't lie...";
+    } else if (name === "Diana Reeves") {
+        document.getElementById("shark-intro").textContent = "Diana Reeves, The Retail Queen: Every product tells me a story, yours better be good.";
+    } else if (name === "Marcus Chen") {
+        document.getElementById("shark-intro").textContent = "Marcus Chen, The Maverick: Sweat equity is the most valuable equity there is.";
+    } else if (name === "Grace Morales") {
+        document.getElementById("shark-intro").textContent = "Grace Morales, The People's Investor: I invest in people, not just the product.";
+    }
      document.getElementById("shark-line").textContent= name + " is ready to invest!";
         document.getElementById("pitch-line").textContent= "FreshPack: eco-friendly lunch boxes for students. Asking $50,000 for 10%.";
 }
