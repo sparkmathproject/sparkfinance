@@ -18,13 +18,27 @@
             background-color: #c8a44c;
             color: #070a12;
         }
+        .shark-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px;
+        }
         .shark-card {
             background-color: #141a2a;
             border-radius: 10px;
             padding: 15px;
-            margin: 10px;
             text-align: left;
             cursor: pointer;
+            border-top: 4px solid #c8a44c;
+        }
+        .shark-card h3 {
+            font-size: 17px;
+            margin: 10px 0 3px 0;
+        }
+        .shark-card p {
+            font-size: 14px;
+            margin: 5px 0;
         }
         .shark-circle {
             width: 50px;
@@ -57,33 +71,35 @@
 <h2>Choose Your Shark</h2>
 <p>Each shark invests differently. Pick the one that matches your style.</p>
 <p id="hello-line"></p>
-<div class="shark-card" onclick="pickShark('Victor Sterling')">
+<div class="shark-grid">
+<div class="shark-card" style="border-top-color:#e2d08a" onclick="pickShark('Victor Sterling')">
 <div class="shark-circle" style="background-color:#e2d08a">V</div>
 <h3>Victor Sterling</h3>
-<p>"The Dealmaker"</p>
+<p style="color:#e2d08a">"The Dealmaker"</p>
 <p><i>"Let me tell you why the numbers don't lie..."</i></p>
 <span class="shark-tag">Royalties</span><span class="shark-tag">Numbers-First</span><span class="shark-tag">Licensing</span>
 </div>
-<div class="shark-card" onclick="pickShark('Diana Reeves')">
+<div class="shark-card" style="border-top-color:#f4728a" onclick="pickShark('Diana Reeves')">
 <div class="shark-circle" style="background-color:#f4728a">D</div>
 <h3>Diana Reeves</h3>
-<p>"The Retail Queen"</p>
+<p style="color:#f4728a">"The Retail Queen"</p>
 <p><i>"Every product tells me a story, yours better be good."</i></p>
 <span class="shark-tag">Consumer Products</span><span class="shark-tag">Retail</span><span class="shark-tag">Mass Market</span>
 </div>
-<div class="shark-card" onclick="pickShark('Marcus Chen')">
+<div class="shark-card" style="border-top-color:#5aa9ff" onclick="pickShark('Marcus Chen')">
 <div class="shark-circle" style="background-color:#5aa9ff">M</div>
 <h3>Marcus Chen</h3>
-<p>"The Maverick"</p>
+<p style="color:#5aa9ff">"The Maverick"</p>
 <p><i>"Sweat equity is the most valuable equity there is."</i></p>
 <span class="shark-tag">Technology</span><span class="shark-tag">Big Equity</span><span class="shark-tag">Scale Fast</span>
 </div>
-<div class="shark-card" onclick="pickShark('Grace Morales')">
+<div class="shark-card" style="border-top-color:#2dd4a0" onclick="pickShark('Grace Morales')">
 <div class="shark-circle" style="background-color:#2dd4a0">G</div>
 <h3>Grace Morales</h3>
-<p>"The People's Investor"</p>
+<p style="color:#2dd4a0">"The People's Investor"</p>
 <p><i>"I invest in people, not just the product."</i></p>
 <span class="shark-tag">People First</span><span class="shark-tag">Gut Instinct</span><span class="shark-tag">Underdogs</span>
+</div>
 </div>
 <p id="selected-shark-line"></p>
 <button onclick="enterTank()">Enter the Tank</button>
