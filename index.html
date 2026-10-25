@@ -103,14 +103,64 @@
 </div>
 <p id="selected-shark-line"></p>
 <button onclick="enterTank()">Enter the Tank</button>
-<button onclick="showScreen('screen-learn')">Learn the Basics</button>
+<button onclick="goToLearn()">Learn the Basics</button>
 </div>
 <div id="screen-learn" style="display:none">
-<h2>Learn the Basics</h2>
-<p><b>What is Valuation?</b> If a shark offers $50,000 for 10%, the whole company is worth $50,000 times 100 divided by 10, which is $500,000.</p>
-<p><b>Equity:</b> Equity is the part of the company a shark owns. 10% means the shark owns 10 out of every 100 parts.</p>
-<p><b>Profit Margin:</b> Profit margin is how much money is left after costs, out of every dollar sold.</p>
-<p><b>Growth Rate:</b> Growth rate is how fast sales are going up over time.</p>
+<h2>Learn</h2>
+<p>Master the fundamentals before entering the tank.</p>
+<div id="learn-list">
+<div class="shark-card" onclick="showLesson(1)">
+<h3>What is Valuation?</h3>
+<p>Learn how to figure out what a company is really worth</p>
+</div>
+<div class="shark-card" onclick="showLesson(2)">
+<h3>Equity, Royalties &amp; Licensing</h3>
+<p>Understand the three main deal types and when to use each</p>
+</div>
+<div class="shark-card" onclick="showLesson(3)">
+<h3>Reading the Numbers</h3>
+<p>How to spot good margins, growth rates, and red flags</p>
+</div>
+<div class="shark-card" onclick="showLesson(4)">
+<h3>The Art of the Deal</h3>
+<p>Tips for making smart offers and avoiding overpaying</p>
+</div>
+</div>
+<div id="lesson-1" style="display:none">
+<h3>What is Valuation?</h3>
+<p>Valuation is what someone thinks a company is worth, like a price tag on the whole business.</p>
+<p>The simplest way to calculate it: if someone asks for $50,000 for 20% of their company, they are saying the whole company is worth $250,000. That is $50,000 divided by 0.20.</p>
+<p>But is it really worth that? You have to look at the numbers, revenue, growth, margins, to decide. Just because someone says their company is worth a million dollars does not mean it actually is.</p>
+<p><b>Think About It:</b> A company makes $10,000 a month and asks for $100,000 for 10%. That is a $1,000,000 valuation. With $120,000 annual revenue, would you pay $1,000,000 for it? That is over 8 times revenue, pretty expensive unless they are growing fast.</p>
+<button onclick="backToLessons()">Back to Lessons</button>
+</div>
+<div id="lesson-2" style="display:none">
+<h3>Equity, Royalties &amp; Licensing</h3>
+<p>When you invest, you do not always take equity. There are three main deal types, and each one works differently.</p>
+<p><b>Equity:</b> Equity means you own a piece of the company. If it grows, your piece grows too. If it fails, you lose your money. Best for: High-growth companies you believe in.</p>
+<p><b>Royalty Deal:</b> A royalty deal means you get paid a small amount on every sale, like $1 per unit sold. Less risky because you get money back even if the company does not blow up. Best for: Steady businesses with lots of sales.</p>
+<p><b>Licensing Deal:</b> Licensing means the company pays you a fee to use something you provide, like your brand, your contacts, or your technology. Best for: When you are bringing something specific to the table.</p>
+<p><b>Quick Cheat Sheet:</b> Equity = you bet on the company's future. Big risk, big reward. Royalties = you get paid per sale. Safer, steadier returns. Licensing = they pay you for access to your stuff. Least risk.</p>
+<button onclick="backToLessons()">Back to Lessons</button>
+</div>
+<div id="lesson-3" style="display:none">
+<h3>Reading the Numbers</h3>
+<p>Three numbers tell you almost everything about a business:</p>
+<p><b>Profit Margin:</b> How much money the company keeps from each sale. A 50% margin means they keep 50 cents of every dollar. Under 20% is usually a red flag, they are working hard but barely keeping anything.</p>
+<p><b>Growth Rate:</b> How fast revenue is increasing month over month. 10 to 20% monthly growth is solid. Under 5% means the business might be stalling. Over 30% is exciting but ask yourself: can it last?</p>
+<p><b>Customer Acquisition Cost:</b> How much it costs to get one new customer. If it costs $50 to get a customer who only spends $30, that is a business that loses money the more it grows.</p>
+<p><b>Red Flag Combos:</b> High growth + low margins = burning cash. Flat growth + high ask = overvalued. Great margins + no growth = stuck.</p>
+<button onclick="backToLessons()">Back to Lessons</button>
+</div>
+<div id="lesson-4" style="display:none">
+<h3>The Art of the Deal</h3>
+<p><b>Rule 1:</b> Never fall in love with a product. Fall in love with the numbers.</p>
+<p><b>Rule 2:</b> The entrepreneur's asking price is just a starting point. Most asks are 20 to 40% higher than fair value, they expect to negotiate.</p>
+<p><b>Rule 3:</b> Ask all your due diligence questions. The answers they dodge matter more than the answers they give.</p>
+<p><b>Rule 4:</b> Match your deal type to the business. High-volume, low-margin business? Royalties. High-growth tech? Equity. Niche product? Licensing.</p>
+<p><b>Rule 5:</b> Sometimes the best deal is walking away. Passing on a bad deal saves your fund for a great one.</p>
+<button onclick="backToLessons()">Back to Lessons</button>
+</div>
 <button onclick="showScreen('screen-sharks')">Back to Sharks</button>
 <button onclick="enterTank()">Enter the Tank</button>
 </div>
@@ -154,6 +204,25 @@ function pickShark(name) {
      document.getElementById("shark-line").textContent= name + " is ready to invest!";
         document.getElementById("pitch-line").textContent= "FreshPack: eco-friendly lunch boxes for students. Asking $50,000 for 10%.";
         document.getElementById("selected-shark-line").textContent = "You picked " + name + ". Tap Enter the Tank.";
+}
+function goToLearn() {
+    showScreen("screen-learn");
+    backToLessons();
+}
+function showLesson(n) {
+    document.getElementById("learn-list").style.display = "none";
+    document.getElementById("lesson-1").style.display = "none";
+    document.getElementById("lesson-2").style.display = "none";
+    document.getElementById("lesson-3").style.display = "none";
+    document.getElementById("lesson-4").style.display = "none";
+    document.getElementById("lesson-" + n).style.display = "block";
+}
+function backToLessons() {
+    document.getElementById("lesson-1").style.display = "none";
+    document.getElementById("lesson-2").style.display = "none";
+    document.getElementById("lesson-3").style.display = "none";
+    document.getElementById("lesson-4").style.display = "none";
+    document.getElementById("learn-list").style.display = "block";
 }
 function enterTank() {
     if (sharkName === "") {
