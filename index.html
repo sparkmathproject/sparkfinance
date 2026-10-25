@@ -57,34 +57,46 @@
 <h2>Choose Your Shark</h2>
 <p>Each shark invests differently. Pick the one that matches your style.</p>
 <p id="hello-line"></p>
-<div class="shark-card" onclick="meetSharks('Victor Sterling')">
+<div class="shark-card" onclick="pickShark('Victor Sterling')">
 <div class="shark-circle" style="background-color:#e2d08a">V</div>
 <h3>Victor Sterling</h3>
 <p>"The Dealmaker"</p>
 <p><i>"Let me tell you why the numbers don't lie..."</i></p>
 <span class="shark-tag">Royalties</span><span class="shark-tag">Numbers-First</span><span class="shark-tag">Licensing</span>
 </div>
-<div class="shark-card" onclick="meetSharks('Diana Reeves')">
+<div class="shark-card" onclick="pickShark('Diana Reeves')">
 <div class="shark-circle" style="background-color:#f4728a">D</div>
 <h3>Diana Reeves</h3>
 <p>"The Retail Queen"</p>
 <p><i>"Every product tells me a story, yours better be good."</i></p>
 <span class="shark-tag">Consumer Products</span><span class="shark-tag">Retail</span><span class="shark-tag">Mass Market</span>
 </div>
-<div class="shark-card" onclick="meetSharks('Marcus Chen')">
+<div class="shark-card" onclick="pickShark('Marcus Chen')">
 <div class="shark-circle" style="background-color:#5aa9ff">M</div>
 <h3>Marcus Chen</h3>
 <p>"The Maverick"</p>
 <p><i>"Sweat equity is the most valuable equity there is."</i></p>
 <span class="shark-tag">Technology</span><span class="shark-tag">Big Equity</span><span class="shark-tag">Scale Fast</span>
 </div>
-<div class="shark-card" onclick="meetSharks('Grace Morales')">
+<div class="shark-card" onclick="pickShark('Grace Morales')">
 <div class="shark-circle" style="background-color:#2dd4a0">G</div>
 <h3>Grace Morales</h3>
 <p>"The People's Investor"</p>
 <p><i>"I invest in people, not just the product."</i></p>
 <span class="shark-tag">People First</span><span class="shark-tag">Gut Instinct</span><span class="shark-tag">Underdogs</span>
 </div>
+<p id="selected-shark-line"></p>
+<button onclick="enterTank()">Enter the Tank</button>
+<button onclick="showScreen('screen-learn')">Learn the Basics</button>
+</div>
+<div id="screen-learn" style="display:none">
+<h2>Learn the Basics</h2>
+<p><b>What is Valuation?</b> If a shark offers $50,000 for 10%, the whole company is worth $50,000 times 100 divided by 10, which is $500,000.</p>
+<p><b>Equity:</b> Equity is the part of the company a shark owns. 10% means the shark owns 10 out of every 100 parts.</p>
+<p><b>Profit Margin:</b> Profit margin is how much money is left after costs, out of every dollar sold.</p>
+<p><b>Growth Rate:</b> Growth rate is how fast sales are going up over time.</p>
+<button onclick="showScreen('screen-sharks')">Back to Sharks</button>
+<button onclick="enterTank()">Enter the Tank</button>
 </div>
 <div id="screen-game" style="display:none">
 <p id="shark-intro"></p>
@@ -109,9 +121,10 @@ function showScreen(id) {
     document.getElementById('screen-start').style.display = 'none';
     document.getElementById('screen-sharks').style.display = 'none';
     document.getElementById('screen-game').style.display = 'none';
+    document.getElementById('screen-learn').style.display = 'none';
     document.getElementById(id).style.display = 'block';
 }
-function meetSharks(name) {
+function pickShark(name) {
     sharkName = name;
     if (name === "Victor Sterling") {
         document.getElementById("shark-intro").textContent = "Victor Sterling, The Dealmaker: Let me tell you why the numbers don't lie...";
@@ -124,7 +137,14 @@ function meetSharks(name) {
     }
      document.getElementById("shark-line").textContent= name + " is ready to invest!";
         document.getElementById("pitch-line").textContent= "FreshPack: eco-friendly lunch boxes for students. Asking $50,000 for 10%.";
+        document.getElementById("selected-shark-line").textContent = "You picked " + name + ". Tap Enter the Tank.";
+}
+function enterTank() {
+    if (sharkName === "") {
+        document.getElementById("selected-shark-line").textContent = "Pick a shark first.";
+    } else {
         showScreen("screen-game");
+    }
 }
  function sayHello() {
         let name=document.getElementById("player-name"). value;
