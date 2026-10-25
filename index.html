@@ -132,6 +132,10 @@
 <p>The simplest way to calculate it: if someone asks for $50,000 for 20% of their company, they are saying the whole company is worth $250,000. That is $50,000 divided by 0.20.</p>
 <p>But is it really worth that? You have to look at the numbers, revenue, growth, margins, to decide. Just because someone says their company is worth a million dollars does not mean it actually is.</p>
 <p><b>Think About It:</b> A company makes $10,000 a month and asks for $100,000 for 10%. That is a $1,000,000 valuation. With $120,000 annual revenue, would you pay $1,000,000 for it? That is over 8 times revenue, pretty expensive unless they are growing fast.</p>
+<p><b>Try it yourself:</b> An entrepreneur asks for $50,000 for 20% of their company. What is the implied valuation?</p>
+<p>Your Answer ($): <input id="quiz-answer" type="number"></p>
+<button onclick="checkQuiz()">Check</button>
+<p id="quiz-result"></p>
 <button onclick="backToLessons()">Back to Lessons</button>
 </div>
 <div id="lesson-2" style="display:none">
@@ -227,8 +231,17 @@ function backToLessons() {
 function enterTank() {
     if (sharkName === "") {
         document.getElementById("selected-shark-line").textContent = "Pick a shark first.";
+        showScreen("screen-sharks");
     } else {
         showScreen("screen-game");
+    }
+}
+function checkQuiz() {
+    let answer = document.getElementById("quiz-answer").value;
+    if (answer == 250000) {
+        document.getElementById("quiz-result").textContent = "Correct! $50,000 divided by 0.20 = $250,000. You are ready to make some deals.";
+    } else {
+        document.getElementById("quiz-result").textContent = "Not quite. The answer is $250,000. Formula: $50,000 divided by 0.20 = $250,000.";
     }
 }
  function sayHello() {
