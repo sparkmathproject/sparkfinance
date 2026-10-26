@@ -73,6 +73,11 @@
         #screen-start p { font-size: 22px; }
         #screen-start input { font-size: 22px; padding: 10px; }
         #screen-start button { font-size: 22px; padding: 14px 32px; }
+
+        #screen-game { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        #screen-game p { font-size: 22px; }
+        #screen-game input { font-size: 22px; padding: 10px; }
+        #screen-game button { font-size: 22px; padding: 14px 32px; }
     </style>
 </head>
 <body>
@@ -209,7 +214,7 @@ function showScreen(id) {
     document.getElementById('screen-sharks').style.display = 'none';
     document.getElementById('screen-game').style.display = 'none';
     document.getElementById('screen-learn').style.display = 'none';
-    document.getElementById(id).style.display = (id === 'screen-start' ? 'flex' : 'block');
+    document.getElementById(id).style.display = (id === 'screen-start' || id === 'screen-game' ? 'flex' : 'block');
 }
 function pickShark(name) {
     sharkName = name;
