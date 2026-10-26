@@ -67,12 +67,18 @@
         .fun-bg .s3 { bottom: 12%; left: 6%; font-size: 44px; }
         .fun-bg .s4 { bottom: 6%; right: 8%; transform: rotate(10deg); }
         body > div { position: relative; z-index: 1; }
+
+        #screen-start { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        #screen-start h1 { font-size: 64px; margin: 10px 0; }
+        #screen-start p { font-size: 22px; }
+        #screen-start input { font-size: 22px; padding: 10px; }
+        #screen-start button { font-size: 22px; padding: 14px 32px; }
     </style>
 </head>
 <body>
 <div class="fun-bg" aria-hidden="true"><span class="s1">🦈</span><span class="s2">🦈</span><span class="s3">🫧</span><span class="s4">🌊</span></div>
 <div id="screen-start">
-        <p style="font-size:48px; margin:10px 0 0 0;">🦈 🌊 🦈</p>
+        <p style="font-size:72px; margin:10px 0 0 0;">🦈 🌊 🦈</p>
         <h1>SparkFinance</h1>
         <p>An Investment Pitch Simulation</p>
         <p>Your name: <input id="player-name" type="text" ></p>
@@ -203,7 +209,7 @@ function showScreen(id) {
     document.getElementById('screen-sharks').style.display = 'none';
     document.getElementById('screen-game').style.display = 'none';
     document.getElementById('screen-learn').style.display = 'none';
-    document.getElementById(id).style.display = 'block';
+    document.getElementById(id).style.display = (id === 'screen-start' ? 'flex' : 'block');
 }
 function pickShark(name) {
     sharkName = name;
